@@ -1,0 +1,18 @@
+[0] Config.pm:302> INFO - This is Biber 2.10
+[0] Config.pm:305> INFO - Logfile is 'main.blg'
+[30] biber-darwin:313> INFO - === Sa Apr 21, 2018, 11:38:43
+[49] Biber.pm:371> INFO - Reading 'main.bcf'
+[130] Biber.pm:857> INFO - Found 4 citekeys in bib section 0
+[141] Biber.pm:3976> INFO - Processing section 0
+[151] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
+[153] bibtex.pm:1490> INFO - LaTeX decoding ...
+[205] bibtex.pm:1306> INFO - Found BibTeX data source 'references.bib'
+[215] Biber.pm:4136> INFO - Looking for bibtex format file 'literatur.bib' for section 0
+[215] bibtex.pm:1490> INFO - LaTeX decoding ...
+[221] bibtex.pm:1306> INFO - Found BibTeX data source 'literatur.bib'
+[243] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[243] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[243] Biber.pm:3804> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[243] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[253] bbl.pm:617> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[255] bbl.pm:720> INFO - Output to main.bbl

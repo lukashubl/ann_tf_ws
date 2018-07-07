@@ -1,0 +1,164 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{borgefors1988hierarchical}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f95d21f93d73625d151bc9cdfa0f8d46}{%
+           family={Borgefors},
+           familyi={B\bibinitperiod},
+           given={Gunilla},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{f95d21f93d73625d151bc9cdfa0f8d46}
+      \strng{fullhash}{f95d21f93d73625d151bc9cdfa0f8d46}
+      \strng{bibnamehash}{f95d21f93d73625d151bc9cdfa0f8d46}
+      \strng{authorbibnamehash}{f95d21f93d73625d151bc9cdfa0f8d46}
+      \strng{authornamehash}{f95d21f93d73625d151bc9cdfa0f8d46}
+      \strng{authorfullhash}{f95d21f93d73625d151bc9cdfa0f8d46}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on pattern analysis and machine intelligence}
+      \field{number}{6}
+      \field{title}{Hierarchical chamfer matching: A parametric edge matching algorithm}
+      \field{volume}{10}
+      \field{year}{1988}
+      \field{pages}{849\bibrangedash 865}
+      \range{pages}{17}
+    \endentry
+    \entry{burger2016digital}{book}{}
+      \name{author}{2}{}{%
+        {{hash=9ad59080ba03ad1d0e62ab1765d41109}{%
+           family={Burger},
+           familyi={B\bibinitperiod},
+           given={Wilhelm},
+           giveni={W\bibinitperiod}}}%
+        {{hash=ce864fd68732e6981b2e41543488f855}{%
+           family={Burge},
+           familyi={B\bibinitperiod},
+           given={Mark\bibnamedelima J},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{ac4c247bd911e7ff3d3bb6db374aef67}
+      \strng{fullhash}{ac4c247bd911e7ff3d3bb6db374aef67}
+      \strng{bibnamehash}{ac4c247bd911e7ff3d3bb6db374aef67}
+      \strng{authorbibnamehash}{ac4c247bd911e7ff3d3bb6db374aef67}
+      \strng{authornamehash}{ac4c247bd911e7ff3d3bb6db374aef67}
+      \strng{authorfullhash}{ac4c247bd911e7ff3d3bb6db374aef67}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Digital image processing: an algorithmic introduction using Java}
+      \field{year}{2016}
+    \endentry
+    \entry{Drake1948}{report}{}
+      \name{author}{3}{}{%
+        {{hash=45f717cd87433ea61e52a56f3f5044c2}{%
+           family={Drake},
+           familyi={D\bibinitperiod},
+           given={Huber\bibnamedelima M.},
+           giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=2b2a97bce7b72c08b7a5cacf63da6e4c}{%
+           family={McLaughlin},
+           familyi={M\bibinitperiod},
+           given={Milton\bibnamedelima D.},
+           giveni={M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=992f3d138b7f52e0d905fd9d35a7b7d9}{%
+           family={Goodman},
+           familyi={G\bibinitperiod},
+           given={Harold\bibnamedelima R.},
+           giveni={H\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {NASA Dryden Flight Research Center}%
+      }
+      \list{location}{1}{%
+        {Edwards, CA}%
+      }
+      \strng{namehash}{dbea250ea77114e0930a24d1a651af75}
+      \strng{fullhash}{dbea250ea77114e0930a24d1a651af75}
+      \strng{bibnamehash}{dbea250ea77114e0930a24d1a651af75}
+      \strng{authorbibnamehash}{dbea250ea77114e0930a24d1a651af75}
+      \strng{authornamehash}{dbea250ea77114e0930a24d1a651af75}
+      \strng{authorfullhash}{dbea250ea77114e0930a24d1a651af75}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{month}{1}
+      \field{number}{NACA-RM-L8A05A}
+      \field{title}{Results obtained during accelerated transonic tests of the {Bell} {XS-1} airplane in flights to a {MACH} number of 0.92}
+      \field{type}{techreport}
+      \field{year}{1948}
+      \verb{urlraw}
+      \verb http://www.nasa.gov/centers/dryden/pdf/87528main_RM-L8A05A.pdf
+      \endverb
+      \verb{url}
+      \verb http://www.nasa.gov/centers/dryden/pdf/87528main_RM-L8A05A.pdf
+      \endverb
+    \endentry
+    \entry{horn1981determining}{article}{}
+      \name{author}{2}{}{%
+        {{hash=7bdf199b10d87ac0a2260d83b2cd5bf5}{%
+           family={Horn},
+           familyi={H\bibinitperiod},
+           given={Berthold\bibnamedelima KP},
+           giveni={B\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=cdc30dcfdbf417e6a44abac569145207}{%
+           family={Schunck},
+           familyi={S\bibinitperiod},
+           given={Brian\bibnamedelima G},
+           giveni={B\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{256f6af17d8378c2a1b67d4785b6855c}
+      \strng{fullhash}{256f6af17d8378c2a1b67d4785b6855c}
+      \strng{bibnamehash}{256f6af17d8378c2a1b67d4785b6855c}
+      \strng{authorbibnamehash}{256f6af17d8378c2a1b67d4785b6855c}
+      \strng{authornamehash}{256f6af17d8378c2a1b67d4785b6855c}
+      \strng{authorfullhash}{256f6af17d8378c2a1b67d4785b6855c}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Artificial intelligence}
+      \field{number}{1-3}
+      \field{title}{Determining optical flow}
+      \field{volume}{17}
+      \field{year}{1981}
+      \field{pages}{185\bibrangedash 203}
+      \range{pages}{19}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

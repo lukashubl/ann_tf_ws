@@ -1,0 +1,214 @@
+\chapter{Evaluieren und Visualisieren}
+
+\section{Accuracy}
+Fertig! Die eigentliche Arbeit ist somit erledigt und das Model wurde trainiert. Nun möchte man möglicherweise evaluieren, wie gut das Model performt. Dies kann relativ einfach durch das Hinzufügen einer weiteren Funktion erledigt werden.
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+with tf.name_scope('Accuracy'):
+    acc = tf.equal(tf.argmax(pred,1), tf.argmax(y, 1))
+    acc = tf.reduce_mean(tf.cast(acc, tf.float32))
+\end{lstlisting}
+
+
+Die Accuracy vergleicht dabei das Ergebnis des Models mit dem Label des Datensatzes und notiert sich eine 1, wenn diese übereinstimmen und eine 0, wenn nicht. Im nächsten Schritt wird ein Mittelwert über alle Prädiktionen gebildet, was einen Wert ergibt, der eine prozentuelle Übereinstimmung zwischen Prädiktion und Label widerspiegelt. Um diesen Wert in der Konsole anzeigen zu lassen, muss einfach folgender Befehl an das Ende des Session Bereichs hinzugefügt werden:
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+print("Accuracy: ", acc.eval({x: mnist.test.images, y: mnist.test.labels}))
+\end{lstlisting}
+
+Will man außerdem visuell Einsicht in die geleistete Arbeit werfen, eignet sich TensorBoard perfekt dafür. In diesem Workshop werden folgende Visualisierungen mit Hilfe von TensorBoard implementiert:
+
+
+
+\section{Graph}
+
+Will man sich den Graphen, welcher den Datenfluss dieses Scripts zeigt, anzeigen lassen, sind folgende Codeteile einzufügen:
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+logs_path = 'tf_logs'
+\end{lstlisting}
+
+
+Diese Zeile muss zu den anderen Parametern am Anfang des Scripts hinzugefügt werden und gibt an, in welches Verzeichnis TensorFlow die serialisierten Graph-Daten für TensorBoard speichern soll.
+
+Danach muss am Beginn des Session Bereichs im Script folgende Zeile eingefügt werden um einen FileWriter zu erzeugen, welcher den Graphen serialisiert und an den definierten Pfad (\textbf{\textit{logs\_path}}) speichert:
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+summary_writer = tf.summary.FileWriter(logs_path, graph= tf.get_default_graph()) 
+\end{lstlisting}
+
+
+Am Ende des Session Bereichs im Script muss zusätzlich folgendes Statement eingefügt werden, um den FileWriter wieder ordnungsgemäß zu schließen:
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+summary_writer.close()
+\end{lstlisting}
+
+
+Wird nun das Script ausgeführt und TensorBoard gestartet, kann unter dem Tab \textbf{„Graph“} der Graph eingesehen werden.
+
+\section{Skalare}
+
+Eine weitere Möglichkeit TensorBoard sinnvoll einzusetzen ist, bestimmte Skalare zu definieren, die im Laufe des Trainings geloggt werden, um deren Verlauf in TensorBoard nachvollziehbar zu machen. In diesem Fall werden Skalare für den Fehler und die Accuracy gebildet:
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+tf.summary.scalar("loss", cost)
+tf.summary.scalar("accuracy", acc)
+merged_summary_op = tf.summary.merge_all()
+\end{lstlisting}
+
+
+Dieser Code muss vor dem Beginn des Session Bereichs implementiert werden und erstellt jeweils einen Skalar für den Fehler und die Accuracy. Der dritte Befehl wird benötigt, damit alle Summaries im Graph verwendet werden. Um nun diese Skalare zu loggen, muss folgende Zeile im Session Bereich:
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+opt, c = sess.run([optimizer, cost], feed_dict={x: batch_xs, y: batch_ys})
+\end{lstlisting}
+
+durch diese ersetzt werden: 
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+opt, c, summary = sess.run([optimizer, cost, merged_summary_op], feed_dict={x: batch_xs, y: batch_ys})
+\end{lstlisting}
+
+und darüber hinaus jene Zeile gleich danach eingefügt werden:             
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+summary_writer.add_summary(summary, epoch*total_batch + i)
+\end{lstlisting}
+
+
+Analog zum Graph muss auch hier das Script und TensorBoard ausgeführt werden, um den Trace der beiden Skalare über den Trainingsprozess hinweg nachverfolgen zu können.
+
+\section{Projektor}
+
+Der Projektor bietet die Möglichkeit, die 784 Dimensionen eines MNIST Bildes auf 3 Dimensionen zu reduzieren und somit die einzelnen Bilder der MNIST Datenbank im Dreidimensionalen Raum gegenüberzustellen. Dazu müssen im Code zweierlei Daten zu Verfügung gestellt werden: Metadaten und Embeddings. Metadaten werden dazu benötigt, den Bezug eines Bildes zum entsprechenden Label herstellen zu können. Dies kann gemacht werden, indem man mit folgendem Code eine Datei erstellt, die Zeilenweise die Labels, jedoch nicht im One-Hot Format, zu jedem Bild der Trainingsdaten enthält.
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+metadata = os.path.join(logs_path, 'metadata.tsv')
+with open(metadata, 'w') as metadata_file:
+    for row in mnistTwo.test.labels:
+        metadata_file.write('%d\n' % row)
+\end{lstlisting}
+
+Die Postion dieses Codestücks liegt wiederum vor dem Session Bereich. Innerhalb des Session Bereichs werden nun die Embeddings konfiguriert:
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+saver = tf.train.Saver([images])
+saver.save(sess, os.path.join(logs_path, 'images.ckpt'))
+config = projector.ProjectorConfig()
+    embedding = config.embeddings.add()
+    embedding.tensor_name = images.name
+    embedding.sprite.image_path = os.path.join(logs_path, 'sprite.png')
+    embedding.metadata_path = metadata
+    embedding.sprite.single_image_dim.extend([28,28])
+
+    projector.visualize_embeddings(tf.summary.FileWriter(logs_path), config)
+\end{lstlisting}
+
+
+
+Hier werden sowohl die vorhin erstellten Metadaten zu den Embeddings hinzugefügt, als auch ein Sprite Image angegeben, welches die einzelnen Bilder der MNIST Daten als Thumbnails in einem .png File vereint. Zum Schluss noch das Visualisieren der Embeddings laut den gerade erstellten Settings (Sprite Image, Metadata) aktiviert. Durch Ausführen des Scripts und das Aktivieren von TensorBoard kann nun im Tab Projektor und unter T-SNE als Dimensions-Reduktions Algorithmus die dimensionale Trennung der einzelnen Datensätze begutachtet werden.
+
+Diese Ansicht ist analog zu jener einfachen Klassifizierung zu sehen, nur dass es sich bei MNIST Bildern nicht um 2 sondern um 784 auf 3 Dimensionen reduzierte Daten handelt.
+
+
+\label{cha:Evaluieren und Visualisieren}

@@ -1,0 +1,119 @@
+\chapter{Trainieren}
+
+Nachdem nun auch die Möglichkeit der Bewertung des Models gegeben ist, kann damit begonnen werden das Model, basierend auf seinen Fehlern, zu trainieren. Der Ansatz, der in diesem Workshop dazu verwendet wird, lautet Gradient Descent und lässt sich am einfachsten mit einem simplen Beispiel erläutern. Dazu kann man sich einen Bergsteiger vorstellen, der sich auf einem Berggipfel befindet und sich ins Tal begeben will. Dazu kommt, dass der Bergsteiger eine Augenbinde trägt und somit den Weg ins Tal nicht sehen kann. Den Ansatz, den der „Gradient Descent Bergsteiger“ nun wählt, ist folgender:
+Zuerst fühlt er mit seinen Füßen den Boden sich selbst herum ab, um das steilste Gefälle rundum ihn zu finden, um daraufhin einen Schritt in diese Richtung zu machen.
+Diesen Vorgang wiederholt er so lange, bis der 
+\newcounter{zaehler} 
+   \begin{list} 
+      \usecounter{zaehler} 
+       \setcounter{zaehler}{1} 
+      \item[\alph{zaehler})]\stepcounter{zaehler} keine Schritte mehr gehen kann. 
+      \item[\alph{zaehler})] kein negatives Gefälle mehr fühlen kann und somit annimmt im Tal zu sein.
+   \end{list} 
+
+
+Um dieses Beispiel auf das Training des Models umzumünzen, muss man sich den Berg als Fehlerfunktion des Models (Cross-Entropy), die Position des Bergsteigers als aktuellen Fehler des Models (welcher sich durch das aktuelle Weight-Setup ergibt) und den Schritt des Bergsteigers den Berg hinab als Lernschritt beim trainieren des Models vorstellen. Zwei wichtige Parameter beim Training sind dabei zum einen die initialen Gewichte des Models und zum anderen die Learning-Rate.
+
+
+\section{Initiale Gewichte}
+Die initialen Gewichte des Models spiegeln dabei die Startposition des Bergsteigers auf seinem Weg ins Tal wieder. Wählt man die initialen Gewichte geschickt aus, beginnt die Reise des Bergsteigers relativ nahe über dem Tal, werden sie ungeschickt gewählt, muss der Bergsteiger seinen Abstieg am Gipfel des Berges, am maximalen Fehler, beginnen. 
+
+
+\section{Learning Rate}
+Die Learning-Rate gibt an, wie viel das Model auf einmal lernen kann. Dies ist wiederum vorstellbar mit der Schrittlänge, die der Bergsteiger hat. Wird die Learning-Rate zu groß gewählt, kann es dazu kommen, dass der Fehler nicht wie erwünscht immer kleiner wird mit jeder Iteration, sondern dass sich dieser mit jeder Iteration immer weiter aufschaukelt.
+Wird sie allerdings zu klein gewählt, sind die Lernschritte äußerst klein und der Lernvorgang dauert somit sehr lange und benötigt eine enorme Menge an Trainingsdaten.
+
+\section{Implementierung}
+
+Um das Modell zu trainieren müssen folgende Zeilen Code hinzugefügt werden. Zunächst müssen drei Parameter definiert werden:
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+learning_rate = 0.01 
+#Gibt an wie schnell gelernt werden kann.
+
+training_epochs = 30
+#Gibt an wie oft das Model trainiert werden soll. Vergleichbar mit der Anzahl der Schritte die der Bergsteiger gehen darf.
+
+batch_size = 100
+#In jeder Epoche wird das Model mit allen MNIST Trainings-Datensätzen trainiert. Die Batch Size gibt dabei an wie groß die einzelnen Chargen an Datensätzen sein sollen.
+
+\end{lstlisting}
+
+Als nächstes muss wiederum eine Funktion angelegt werden, die den eigentlichen Lernvorgang, in diesem Fall mit Hilfe von Gradient Descent, abbildet:
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+with tf.name_scope('Optimizer'):
+    optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
+\end{lstlisting}
+
+
+Wiederum in einem eigenen \textbf{\textit{name\_scope}} wird hier ein Gradient Descent Optimizer erstellt, der mit der vorhin definierten Learning-Rate versucht, die Kosten-cost (Cross-Entropy)-zu minimieren. Nun kann begonnen werden das Model zu trainieren, dazu müssen zuerst alle TensorFlow Variablen initialisiert werden. Dies geschieht mit dem Befehl.
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+init = tf.global_variables_initializer()
+\end{lstlisting}
+
+
+Im nächsten Schritt wird eine TensorFlow Session eröffnet, mit deren Hilfe erst die einzelnen Funktionen ausgeführt werden können.
+
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+\begin{lstlisting}
+with tf.Session() as sess:
+    sess.run(init)
+    #training
+    for epoch in range(training_epochs):
+        avg_cost = 0.0
+        total_batch = int(mnist.train.num_examples/batch_size)
+        #loop over all batches
+        for i in range(total_batch):
+            batch_xs, batch_ys = mnist.train.next_batch(batch_size)
+            opt, c = sess.run([optimizer, cost], feed_dict={x: batch_xs, y: batch_ys})
+            avg_cost += c / total_batch
+
+        if (epoch+1) % 1 == 0:
+            print(avg_cost)
+
+\end{lstlisting}
+
+Dieser Code initialisiert zuerst alle Variablen und fährt dann fort mit dem eigentlichen Training. Dazu wird \textbf{\textit{training\_epochs}} mal das gesamte Trainingsdaten-Set vom MNIST in \textbf{\textit{batch\_size}} große Stücke zerlegt und jeweils nacheinander in die Placeholder InputData und LabelData geladen. Daraufhin wird auf Basis der Daten in den Placeholdern sowohl der Fehler des Models berechnet (cost), als auch der Optimizer gestartet, welcher das Model iterativ verbessert. Darüber hinaus wird aus Visualisierungsgründen der durchschnittliche Fehler berechnet und auf der Konsole ausgegeben. Durch die Ausgabe auf der Konsole kann über jede Epoche hinweg mitverfolgt werden, wie der Fehler stetig kleiner wird.
+
+
+
+
+\label{cha:Trainieren}

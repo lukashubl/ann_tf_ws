@@ -1,0 +1,31 @@
+\chapter{Bewertungsschema}
+
+Nach dem einbinden der MNIST Daten und dem erstellen des Models mitsamt allen benötigten Placeholder und Variablen ist es nun an der Zeit festzustellen wie nahe die Prädiktionen des Models an der Realität sind. Dafür wird in diesem Workshop eine mathematische Methode namens Cross-Entropy verwendet. In kürzester und einfachster Form beschrieben liefert Cross-Entropy einen Zahlenwert welcher die Distanz zwischen dem One-Hot Vektor des Labels mit jenem der Prädiktion liefert. Diese Distanz wird Loss genannt und beschreibt den Fehler des Models bei der Prädiktion. Die Formel von Cross-Entropy lautet dabei: HIER DIE SUMMENFORMEL EINSETZEN. Das folgende Beispiel zeigt die Funktionsweise von Cross-Entropy: HIER DAS RECHENBEISPIEL EINSETZEN
+
+Nun da ein passendes Bewertungsschema gefunden wurde ist es an der Zeit dieses in den Code zu integrieren.
+
+Gleich wie beim Model macht es wiederum Sinn diese Funktion in einen eigenen name_scope zu geben.
+
+
+\lstset{language=Python}
+\definecolor{listinggray}{gray}{0.95} 
+\definecolor{keyword}{rgb}{0.4, 0, 0.1} 
+\definecolor{comment}{rgb}{0, 0.4, 0}
+% Zuweisen der Farben zu den entsprechenden Elementen ... 
+\lstset{keywordstyle=\color{keyword}\bfseries} 
+\lstset{commentstyle=\color{comment}} 
+\lstset{backgroundcolor=\color{listinggray}}
+
+Lazy loading add operation:
+
+\begin{lstlisting}
+with tf.name_scope('Loss'):
+	cost = tf.reduce_mean(-tf.reduce_sum(y*tf.log(pred)))
+\end{lstlisting}
+
+
+Betrachtet man die zweite Zeile genauer scheint es eventuell erstmals nicht ganz klar was hier berechnet wird, dies ist allerdings schnell geklärt.
+Der Teil innerhalb von tf.reduce_mean beinhaltet lediglich die mathematische Formel von Cross-Entropy (hier noch einmal die Formel einsetzen). Da wir allerdings beim Model (pred) möglicherweise nicht nur ein einzelnes Bild evaluieren lassen möchten (die Anzahl der Bilder in InputData ist nicht begrenzt), wird über tf.reduce_mean der Mittelwert über alle Einzelfehler aller zu evaluierenden Bilder berechnet.
+
+
+\label{cha:Bewertungsschema}
