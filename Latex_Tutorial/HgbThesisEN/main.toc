@@ -2,65 +2,53 @@
 \babel@toc {english}{}
 \babel@toc {ngerman}{}
 \babel@toc {english}{}
-\babel@toc {english}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Declaration}{iii}{chapter*.1}
-\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Einf\IeC {\"u}hrung}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Abstract}{vi}{chapter*.3}
+\contentsline {chapter}{\numberline {2}Installation}{2}{chapter.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {2.1}Python}{2}{section.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}Overview}{2}{chapter.2}
+\contentsline {section}{\numberline {2.2}Pandas und Matplotlib}{3}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Installation}{3}{chapter.3}
+\contentsline {section}{\numberline {2.3}Tensorflow}{3}{section.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Python}{3}{section.3.1}
+\contentsline {section}{\numberline {2.4}Optional: Openvc}{3}{section.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Pandas und Matplotlib}{4}{section.3.2}
+\contentsline {chapter}{\numberline {3}MNIST}{4}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Tensorflow}{4}{section.3.3}
+\contentsline {section}{\numberline {3.1}Implementierung: MNIST Daten einlesen}{5}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Optional: Openvc}{4}{section.3.4}
+\contentsline {section}{\numberline {3.2}Testen: MNIST Daten einlesen}{6}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}MNIST}{6}{chapter.4}
+\contentsline {chapter}{\numberline {4}Model}{7}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Implementierung: MNIST Daten einlesen}{7}{section.4.1}
+\contentsline {section}{\numberline {4.1}Logistic Regression}{7}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Testen: MNIST Daten einlesen}{8}{section.4.2}
+\contentsline {section}{\numberline {4.2}Softmax Regression}{7}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Model}{9}{chapter.5}
+\contentsline {section}{\numberline {4.3}Implementierung}{8}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Logistic Regression}{9}{section.5.1}
+\contentsline {chapter}{\numberline {5}Bewertungsschema}{10}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Softmax Regression}{9}{section.5.2}
+\contentsline {chapter}{\numberline {6}Trainieren}{12}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Implementierung}{10}{section.5.3}
+\contentsline {section}{\numberline {6.1}Initiale Gewichte}{12}{section.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Bewertungsschema}{12}{chapter.6}
+\contentsline {section}{\numberline {6.2}Learning Rate}{12}{section.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Trainieren}{14}{chapter.7}
+\contentsline {section}{\numberline {6.3}Implementierung}{13}{section.6.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.1}Initiale Gewichte}{14}{section.7.1}
+\contentsline {chapter}{\numberline {7}Evaluieren und Visualisieren}{15}{chapter.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.2}Learning Rate}{14}{section.7.2}
+\contentsline {section}{\numberline {7.1}Accuracy}{15}{section.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.3}Implementierung}{15}{section.7.3}
+\contentsline {section}{\numberline {7.2}Graph}{15}{section.7.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Evaluieren und Visualisieren}{17}{chapter.8}
+\contentsline {section}{\numberline {7.3}Skalare}{16}{section.7.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.1}Accuracy}{17}{section.8.1}
+\contentsline {section}{\numberline {7.4}Projektor}{16}{section.7.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.2}Graph}{17}{section.8.2}
+\contentsline {chapter}{\numberline {8}Verwenden des gelernten Models: Realtime Klassifizierer}{18}{chapter.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.3}Skalare}{18}{section.8.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.4}Projektor}{18}{section.8.4}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}Verwenden des gelernten Models: Realtime Klassifizierer}{20}{chapter.9}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.1}Implementation}{20}{section.9.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {10}Closing Remarks}{23}{chapter.10}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{24}{appendix*.11}
+\contentsline {section}{\numberline {8.1}Implementation}{18}{section.8.1}

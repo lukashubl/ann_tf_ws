@@ -248,17 +248,7 @@
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
-			{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
-			\vskip 4mm%
-			{\large Nr.~\@thesisnumber}
-			\vskip 4mm%
-			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
-			\vskip 4mm%
-			{\large\@programname}%
-			\vskip 4mm%
-			{\large in \@placeofstudy}%
-			\vskip 16mm%
-			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			{\Large\uppercase{WAF3  Abgabe-Tutorial}}%
 		\end{center}%
 		\vfil%
 	\end{german}
@@ -478,26 +468,6 @@ This work is published under the conditions of the
 % English
 
 \newcommand{\@advisorpageEn}{%
-	\newpage
-	\setcounter{page}{2}
-	\thispagestyle{plain}
-	\rule{0mm}{1mm}
-	\begin{center}
-		%
-		\vspace{40mm} 
-		{This thesis was created as part of the course}\\
-		\vspace{6mm} 
-		{\Large\sf \@coursetitle\\ \mbox{}}\\
-		\medskip
-		during\\
-		\bigskip
-		{\@semester}\\
-		%
-		\vspace{45mm} 
-		{Advisor:}\\
-		\vspace{3mm} 
-		{\Large\sf \@advisor\\ \mbox{}}
-	\end{center}
 }
 
 \newcommand{\@advisorpage}{%
@@ -536,22 +506,6 @@ This work is published under the conditions of the
 \newcommand{\leadingzero}[1]{\ifnum #1<10 0\the#1\else\the#1\fi}
 
 \newcommand{\@declarationpageEn}{%
-	\begin{english}
-		\chapter{Declaration}
-		\noindent
-		I hereby declare and confirm that this thesis is entirely the result of my own original work. 
-		Where other sources of information have been used, they have been indicated as such and properly 
-		acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
-		\par
-		\vspace{10mm}
-		\noindent
-		%\@placeofstudy, \the\year-\leadingzero{\month}-\leadingzero{\day} %http://de.wikibooks.org/wiki/LaTeX-W%F6rterbuch:_today 
-		\@placeofstudy, {\usdate\formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}}
-		\par
-		\vspace{12mm}
-		\noindent
-		\@author
-	\end{english}
 }
 
 \newcommand{\@declarationpage}{%
