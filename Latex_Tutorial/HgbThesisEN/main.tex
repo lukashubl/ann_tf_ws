@@ -15,6 +15,7 @@
 
 \RequirePackage[utf8]{inputenc}		% Remove when using lualatex or xelatex entfernen!
 \usepackage{multicol}
+\usepackage{hyperref}
 %\usepackage{listings}
 %\usepackage{xcolor}
 %\usepackage{algorithm} 
@@ -33,7 +34,7 @@
 
 %%% Entries for ALL types of work: --------------------------
 \title{TensorFlow - Deep learning framework}
-\author{Lukas Hubl}
+\author{Hubl Lukas, Grüneis Dominik}
 \programname{Mobile Computing}
 \placeofstudy{Hagenberg}
 \dateofsubmission{2018}{06}{28}	% {YYYY}{MM}{DD}
@@ -60,7 +61,6 @@
 \tableofcontents
 
 %\include{front/preface} 	% preface is optional
-\include{front/abstract}
 %\include{front/kurzfassung}
 
 %%%----------------------------------------------------------
@@ -68,12 +68,13 @@
 %%%----------------------------------------------------------
 
 \include{chapters/introduction}
-\include{chapters/overview}
+\include{chapters/installation}
+\include{chapters/mnist}
 \include{chapters/model}
 \include{chapters/bewertungsschema}
 \include{chapters/trainieren}
 \include{chapters/evaluieren}
-\include{chapters/closing}
+\include{chapters/usage}
 
 
 %%%----------------------------------------------------------
@@ -86,11 +87,10 @@
 %\include{back/appendix_d}	% source text of this document
 
 %%%----------------------------------------------------------
-\MakeBibliography                        				% references
+                      				% references
 %%%----------------------------------------------------------
 
 %%% special page for checking print size --------------------
-\include{back/printbox}
 
 %%%----------------------------------------------------------
 \end{document}
